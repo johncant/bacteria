@@ -17,15 +17,21 @@ namespace Bacteria {
       double x;
       double y;
       double angle;
+      SimpleCell(double x, double y, double angle, double width, double length);
       SimpleCell(double x, double y, double angle);
+      SimpleCell();
       void draw_onto_cairo(cairo_t *ct, MicroscopeConfig& mc);
+      void initialize(double x, double y, double angle);
+    private:
+      void initialize_wla();
   };
 
-  template <class CellT> class Colony : std::vector<CellT> {
+  template <class CellT> class Colony : public std::vector<CellT> {
     public:
       static Colony<CellT> generate_gaussian(double mu, double sigma, int count);
       void populate_gaussian(double mu, double sigma, int count);
       void draw_onto_cairo(cairo_t *ct, MicroscopeConfig& mc);
+      bool collision(CellT &new_cell);
   };
 
   template <class CellT> class Generator {
