@@ -298,8 +298,14 @@ void test_with_gtk(int argc, char** argv) {
   darea = gtk_drawing_area_new();
   gtk_container_add(GTK_CONTAINER (window), darea);
 
+#if GTK_MAJOR_VERSION == 2
+  g_signal_connect(G_OBJECT(darea), "expose-event", 
+            G_CALLBACK(on_cairo_draw_event), NULL);  
+#elif GTK_MAJOR_VERSION == 3
   g_signal_connect(G_OBJECT(darea), "draw", 
             G_CALLBACK(on_cairo_draw_event), NULL);  
+#endif
+
   g_signal_connect(G_OBJECT(window), "destroy",
             G_CALLBACK(gtk_main_quit), NULL);
 

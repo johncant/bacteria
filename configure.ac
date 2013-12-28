@@ -25,7 +25,10 @@ AC_CHECK_HEADER_STDBOOL
 GR_ARMADILLO(,,AC_MSG_ERROR([Armadillo not found]))
 
 # Gtk
-PKG_CHECK_MODULES([gtk], [gtk+-3.0])
+PKG_CHECK_MODULES([gtk], [gtk+-3.0],, [
+                      PKG_CHECK_MODULES([gtk], [gtk+-2.0],,AC_MSG_ERROR([gtk+-2.0 or gtk+-3.0 not found]))
+                      ])
+
 PKG_CHECK_MODULES([cairo], [cairo])
 
 # Checks for library functions.
