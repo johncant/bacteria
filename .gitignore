@@ -5,9 +5,11 @@ autom4te.cache/
 config.h
 config.log
 config.status
-generator
 src/.deps/
 src/.dirstamp
 **/*.o
 **/.deps/
 stamp-h1
+
+
+gtk_example

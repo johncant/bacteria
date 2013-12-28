@@ -1,11 +1,29 @@
 # Bacteria
 
 ## Compilation
+
+Dependencies:
+- GTK(2 or 3)
+- Armadillo
+- Cairo
+
 ```bash
-g++ generator.cc -g -larmadillo `pkg-config --cflags --libs gtk+-3.0`
+automake
+autoconf
+./configure
+make
+```
+
+## Usage
+```bash
+./gtk_example
 ```
 
 ## State
 Generate fake microscope images to test algorithm.
 
-<img src="test1.png">
+### No collision detection
+<img src="doc/test1.png">
+
+### With collision detection
+<img src="doc/test2.png">
